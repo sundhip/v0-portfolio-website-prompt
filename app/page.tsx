@@ -9,7 +9,6 @@ export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [hoveredCard, setHoveredCard] = useState<string | null>(null)
   const [activeNav, setActiveNav] = useState<string>("")
-  const [isExploreClicked, setIsExploreClicked] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50)
@@ -18,13 +17,10 @@ export default function Home() {
   }, [])
 
   const handleExploreClick = () => {
-    setIsExploreClicked(true)
     const aboutSection = document.getElementById("about")
     if (aboutSection) {
       aboutSection.scrollIntoView({ behavior: "smooth" })
     }
-    // Reset the clicked state after animation
-    setTimeout(() => setIsExploreClicked(false), 600)
   }
 
   return (
@@ -115,7 +111,7 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-pink-500 rounded-full blur-2xl opacity-60 animate-pulse"></div>
               <div className="relative w-56 h-56 rounded-full overflow-hidden border-4 border-cyan-400 shadow-2xl shadow-cyan-400/50 hover:shadow-pink-500/50 transition-all duration-500">
                 <Image
-                  src="/images/design-mode/WhatsApp%20Image%202025-10-31%20at%201.00.38%20PM%20%281%29.jpeg"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202025-10-31%20at%201.00.38%20PM%20%281%29-1U2EcY830OL6amEOzBpO5IREQpyrX5.jpeg"
                   alt="M. Sundhip Manhooj"
                   fill
                   className="object-cover object-center"
@@ -144,10 +140,15 @@ export default function Home() {
               size={24}
             />
           </div>
-          <button onClick={handleExploreClick} className="group inline-flex items-center gap-2 px-8 py-3 rounded-lg border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black transition duration-300 font-semibold">
-           
-            Explore My World
-            <ArrowDown className="group-hover:translate-y-1 transition" size={20} />
+
+          <button
+            onClick={handleExploreClick}
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full border-2 border-cyan-400 text-cyan-400 font-bold text-lg"
+          >
+            <span className="flex items-center gap-2">
+              Explore My World
+              <ArrowDown size={20} />
+            </span>
           </button>
         </div>
       </section>
